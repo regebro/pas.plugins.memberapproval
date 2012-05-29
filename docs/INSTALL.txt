@@ -1,5 +1,5 @@
 pas.plugins.memberapproval Installation
----------------------------------------
+***************************************
 
 * Add ``collective.memberapproval`` to the list of eggs to install, e.g.::
 

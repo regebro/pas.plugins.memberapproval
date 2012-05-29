@@ -1,2 +1,6 @@
-Radim Novotny, Author
-Lennart Regebro
+Contributors
+************
+
+* Radim Novotny, Author
+
+* Lennart Regebro
