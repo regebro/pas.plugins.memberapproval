@@ -1,5 +1,13 @@
-0.1 (xxxx-xx-xx)
-----------------
+Changelog
+=========
 
-- Created recipe with ZopeSkel
-  [Radim Novotny].
+1.0a2 (unreleased)
+------------------
+
+- Nothing changed yet.
+
+
+1.0a1 (2012-05-29)
+------------------
+
+- Initial release
