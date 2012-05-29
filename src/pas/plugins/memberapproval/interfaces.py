@@ -1,7 +1,7 @@
 from zope.interface import Interface
   
 class IMemberApprovalPlugin(Interface):
-    """interface for MemberapprovalPlugin."""
+    """interface for MemberApprovalPlugin."""
 
     def userApproved(user_id):
         """ Returns true if user is approved """

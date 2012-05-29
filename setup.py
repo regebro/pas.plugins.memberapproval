@@ -14,6 +14,10 @@ version = '0.1'
 long_description = (
     read('docs', 'README.txt')
     + '\n' +
+    read('docs', 'INSTALL.txt')
+    + '\n' +
+    read('docs', 'CONTRIBUTORS.txt')
+    + '\n' +
     'Change history\n'
     '**************\n'
     + '\n' +
@@ -28,10 +32,12 @@ setup(name='pas.plugins.memberapproval',
       # http://pypi.python.org/pypi?:action=list_classifiers
       classifiers=[
         'Framework :: Plone',
+        "Programming Language :: Python",
+        "Programming Language :: Python :: 2.6",
         'Intended Audience :: Developers',
         'License :: OSI Approved :: GNU General Public License (GPL)',
         ],
-      keywords='',
+      keywords='plone pas',
       author='Radim Novotny',
       author_email='novotny.radim@gmail.com',
       url='http://svn.plone.org/svn/collective/',
