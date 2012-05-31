@@ -19,6 +19,8 @@ from Products.PluggableAuthService.utils import createViewName
 from pas.plugins.memberapproval.interfaces import IMemberApprovalPlugin
 from pas.plugins.memberapproval.events import UserApprovedEvent
 from pas.plugins.memberapproval.events import UserDisapprovedEvent
+from pas.plugins.memberapproval.events import UserAddedEvent
+from pas.plugins.memberapproval.events import UserRemoveEvent
 
 
 class MemberapprovalPlugin(UserManager):
@@ -77,7 +79,22 @@ class MemberapprovalPlugin(UserManager):
 
     security.declarePrivate( 'addUser' )
     def addUser( self, user_id, login_name, password ):
+        purl = getToolByName(self, 'portal_url')
+        portal = purl.getPortalObject()
         self._activated_userid[ user_id ] = False
+        result = super(MemberapprovalPlugin, self).addUser(user_id, login_name, password)
+        # The user should be created before the event is sent, so you can do things with it.
+        notify(UserAddedEvent(portal, user_id))
+        return result
+
+    security.declarePrivate( 'removeUser' )
+    def removeUser( self, user_id ):
+        purl = getToolByName(self, 'portal_url')
+        portal = purl.getPortalObject()
+        # We send the event before removing the user, so you can do things
+        # with it (like notify the user that it has been deleted).
+        notify(UserRemoveEvent(portal, user_id))
+        del self._activated_userid[ user_id ]
         return super(MemberapprovalPlugin, self).addUser(user_id, login_name, password)
 
     #
