@@ -4,13 +4,14 @@ Change history
 1.0a3 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Users are no created in an initial "Unapproved" or "Pending" state, so it's
+  possible to distinguish unapproved users from disapproved users.
 
 
 1.0a2 (2012-05-31)
 ------------------
 
-- Nothing changed yet.
+- Bugfixes.
 
 
 1.0a1 (2012-05-29)

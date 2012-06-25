@@ -57,15 +57,15 @@ class MemberapprovalPlugin(UserManager):
 
         return None
 
-    security.declarePrivate( 'userApproved' )
-    def userApproved(self, user_id):
+    security.declarePrivate( 'userStatus' )
+    def userStatus(self, user_id):
         return self._activated_userid.get(user_id, False)
 
     security.declarePrivate( 'approveUser' )
     def approveUser(self, user_id):
         purl = getToolByName(self, 'portal_url')
         portal = purl.getPortalObject()
-        if not self.userApproved(user_id):
+        if self.userStatus(user_id) is not True:
             self._activated_userid[user_id] = True
             notify(UserApprovedEvent(portal, user_id))
 
@@ -73,7 +73,7 @@ class MemberapprovalPlugin(UserManager):
     def disapproveUser(self, user_id):
         purl = getToolByName(self, 'portal_url')
         portal = purl.getPortalObject()
-        if self.userApproved(user_id):
+        if self.userStatus(user_id) is not False:
             self._activated_userid[user_id] = False
             notify(UserDisapprovedEvent(portal, user_id))
 
@@ -81,7 +81,7 @@ class MemberapprovalPlugin(UserManager):
     def addUser( self, user_id, login_name, password ):
         purl = getToolByName(self, 'portal_url')
         portal = purl.getPortalObject()
-        self._activated_userid[ user_id ] = False
+        self._activated_userid[ user_id ] = None
         result = super(MemberapprovalPlugin, self).addUser(user_id, login_name, password)
         # The user should be created before the event is sent, so you can do things with it.
         notify(UserAddedEvent(portal, user_id))
