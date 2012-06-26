@@ -59,7 +59,7 @@ class MemberapprovalPlugin(UserManager):
 
     security.declarePrivate( 'userStatus' )
     def userStatus(self, user_id):
-        return self._activated_userid.get(user_id, False)
+        return self._activated_userid.get(user_id, None)
 
     security.declarePrivate( 'approveUser' )
     def approveUser(self, user_id):
@@ -95,7 +95,7 @@ class MemberapprovalPlugin(UserManager):
         # with it (like notify the user that it has been deleted).
         notify(UserRemoveEvent(portal, user_id))
         del self._activated_userid[ user_id ]
-        return super(MemberapprovalPlugin, self).addUser(user_id, login_name, password)
+        return super(MemberapprovalPlugin, self).removeUser(user_id)
 
     #
     #   IUserEnumerationPlugin implementation
