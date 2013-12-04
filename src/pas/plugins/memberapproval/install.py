@@ -1,4 +1,9 @@
-from zope.app.component.hooks import getSite
+try:
+    # Plone < 4.3
+    from zope.app.component.hooks import getSite
+except ImportError:
+    # Plone >= 4.3
+    from zope.component.hooks import getSite
 from AccessControl.Permissions import manage_users
 from Products.PageTemplates.PageTemplateFile import PageTemplateFile
 from Products.PluggableAuthService import registerMultiPlugin
