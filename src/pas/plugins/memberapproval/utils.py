@@ -1,5 +1,10 @@
 from copy import deepcopy
-from zope.app.component.hooks import getSite
+try:
+    # Plone < 4.3
+    from zope.app.component.hooks import getSite
+except ImportError:
+    # Plone >= 4.3
+    from zope.component.hooks import getSite
 from Products.CMFCore.utils import getToolByName
 from pas.plugins.memberapproval.plugin import MemberapprovalPlugin
 from pas.plugins.memberapproval.interfaces import IMemberApprovalPlugin
