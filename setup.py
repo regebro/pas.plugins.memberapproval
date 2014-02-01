@@ -49,6 +49,7 @@ setup(name='pas.plugins.memberapproval',
           'test': [
               'plone.app.testing',
               'interlude',
+              'zope.globalrequest',
           ]
       }, 
       include_package_data=True,

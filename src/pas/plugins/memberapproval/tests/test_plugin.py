@@ -40,7 +40,7 @@ class PluginTest(unittest.TestCase):
     def testLogin(self):
         self.plugin.disapproveUser(USER_ID)
         r = self.plugin.authenticateCredentials(dict(
-            login=USER_ID,
+            login=USER_NAME,
             password = USER_PASSWORD
         ))
         self.failIf(r is not None)
@@ -48,7 +48,7 @@ class PluginTest(unittest.TestCase):
     def testApproved(self):
         self.plugin.approveUser(USER_ID)
         r = self.plugin.authenticateCredentials(dict(
-            login=USER_ID,
+            login=USER_NAME,
             password = USER_PASSWORD
         ))
         self.failIf(r is None)
