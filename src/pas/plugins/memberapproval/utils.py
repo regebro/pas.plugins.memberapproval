@@ -1,5 +1,5 @@
 from copy import deepcopy
-from zope.app.component.hooks import getSite
+from zope.component.hooks import getSite
 from Products.CMFCore.utils import getToolByName
 from pas.plugins.memberapproval.plugin import MemberapprovalPlugin
 from pas.plugins.memberapproval.interfaces import IMemberApprovalPlugin

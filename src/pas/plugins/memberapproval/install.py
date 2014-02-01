@@ -1,4 +1,4 @@
-from zope.app.component.hooks import getSite
+from zope.component.hooks import getSite
 from AccessControl.Permissions import manage_users
 from Products.PageTemplates.PageTemplateFile import PageTemplateFile
 from Products.PluggableAuthService import registerMultiPlugin

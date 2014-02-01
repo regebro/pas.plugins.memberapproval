@@ -33,6 +33,8 @@ setup(name='pas.plugins.memberapproval',
       classifiers=[
         'Framework :: Plone',
         'Framework :: Plone :: 4.1',
+        'Framework :: Plone :: 4.2',
+        'Framework :: Plone :: 4.3',
         "Programming Language :: Python",
         "Programming Language :: Python :: 2.7",
         'Intended Audience :: Developers',
